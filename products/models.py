@@ -23,7 +23,7 @@ class Product(models.Model):
     description = models.TextField(_('description'), blank=True)
     avatar = models.ImageField(_('avatar'), blank=True, upload_to='products/')
     is_enable = models.BooleanField(_('is enable'), default=True)
-    categories = models.ManyToManyField(_('Category'), verbose_name=_('categories'), blank=True)
+    categories = models.ManyToManyField('Category', verbose_name=_('categories'), blank=True)
     created_time = models.DateTimeField(_('created time'), auto_now_add=True)
     updated_time = models.DateTimeField(_('updated time'), auto_now=True)
 
