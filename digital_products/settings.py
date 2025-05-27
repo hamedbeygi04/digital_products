@@ -30,9 +30,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'products',
+    'rest_framework',
 
-    'rest_framework'
+    'products',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -107,3 +108,6 @@ MEDIA_URL = '/media/'
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Authorization
+AUTH_USER_MODEL = 'users.User'

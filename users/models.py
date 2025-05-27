@@ -99,7 +99,7 @@ class UserProfile(models.Model):
     nick_name = models.CharField(_('nick name'), max_length=150, blank=True)
     avatar = models.ImageField(_('avatar'), blank=True)
     birthday = models.DateField(_('birthday'), null=True, blank=True)
-    gender = models.NullBooleanField(_('gender'), choices=((True, 'Male'), (False, 'Female')), null=True, blank=True)
+    gender = models.BooleanField(_('gender'), choices=((True, 'Male'), (False, 'Female')), null=True, blank=True)
     province = models.ForeignKey(verbose_name=_('province'), to='Province', on_delete=models.SET_NULL, null=True, blank=True)
     # email = models.EmailField(_('email'), blank=True)
     # phone_number = models.BigIntegerField(_('mobile number'), null=True, blank=True,
