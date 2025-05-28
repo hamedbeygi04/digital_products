@@ -18,7 +18,7 @@ class UserManager(BaseUserManager):
                           username=username, email=email,
                           is_staff=is_staff, is_active=True,
                           is_superuser=is_superuser,
-                          date_joined=True, **extra_fields)
+                          date_joined=now, **extra_fields)
 
         if not extra_fields.get('no_password'):
             user.set_password(password)
