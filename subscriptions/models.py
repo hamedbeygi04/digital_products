@@ -27,7 +27,7 @@ class Package(models.Model):
 
 
 class Subscription(models.Model):
-    user = models.ForeignKey('users.User', related_name='%class)s', on_delete=models.CASCADE)
+    user = models.ForeignKey('users.User', related_name='%(class)s', on_delete=models.CASCADE)
     package = models.ForeignKey(Package, related_name='%(class)s', on_delete=models.CASCADE)
     created_time = models.DateTimeField(_('created time'), auto_now_add=True)
     expire_time = models.DateTimeField(_('expire time'), null=True, blank=True)
