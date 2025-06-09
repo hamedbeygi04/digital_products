@@ -1,7 +1,7 @@
 import uuid
 
 import requests
-from rest_framework.utils import timezone
+from django.utils import timezone
 # from django.shortcuts import redirect, render
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -15,7 +15,7 @@ from .serializers import GatewaySerializer
 
 class GatewayView(APIView):
     def get(self, request):
-        gateways = Gateway.objects.filter(is_enabled=True)
+        gateways = Gateway.objects.filter(is_enable=True)
         serializer = GatewaySerializer(gateways, many=True)
         return Response(serializer.data)
 
@@ -27,8 +27,8 @@ class PaymentView(APIView):
         package_id = request.query_params.get('package')
 
         try:
-            package = Package.objects.get(pk=package_id, is_enabled=True)
-            gateway = Gateway.objects.get(pk=gateways_id, is_enabled=True)
+            package = Package.objects.get(pk=package_id, is_enable=True)
+            gateway = Gateway.objects.get(pk=gateways_id, is_enable=True)
         except (Package.DoesNotExist, Gateway.DoesNotExist):
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
@@ -73,7 +73,7 @@ class PaymentView(APIView):
         Subscription.objects.create(
             user=payment.user,
             package=payment.package,
-            expired_time=timezone.now() + timezone.timedelta(days=payment.package.duration.days),
+            expire_time=timezone.now() + timezone.timedelta(days=payment.package.duration_days),
         )
 
         return Response({'detail': 'Payment is successful.'},)
